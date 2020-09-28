@@ -1,0 +1,64 @@
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
+
+var eraValues = <%- formatCldrCode(eras) %>
+
+var quarterValues = <%- formatCldrCode(quarters.standAlone) %>
+
+var formattingQuarterValues = <%- _.isEqual(quarters.format, quarters.standAlone) ? 'quarterValues' : formatCldrCode(quarters.format) %>
+
+var monthValues = <%- formatCldrCode(months.standAlone) %>
+
+var formattingMonthValues = <%- _.isEqual(months.format, months.standAlone) ? 'monthValues' : formatCldrCode(months.format) %>
+
+var dayValues = <%- formatCldrCode(days.standAlone) %>
+
+var formattingDayValues = <%- _.isEqual(days.format, days.standAlone) ? 'dayValues' : formatCldrCode(days.format) %>
+
+var dayPeriodValues = <%- formatCldrCode(dayPeriods.standAlone) %>
+
+var formattingDayPeriodValues = <%- _.isEqual(dayPeriods.format, dayPeriods.standAlone) ? 'dayPeriodValues' : formatCldrCode(dayPeriods.format) %>
+
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
+  return dirtyNumber
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingQuarterValues,
+    argumentCallback: function(quarter) {
+      return Number(quarter) - 1
+    }
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayValues,
+    defaultFormattingWidth: 'wide'
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+}
+
+export default localize

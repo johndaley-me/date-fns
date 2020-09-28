@@ -1,0 +1,19 @@
+{
+  "name": "date-fns-locale-generator",
+  "private": true,
+  "license": "MIT",
+  "version": "1.0.0",
+  "description": "script for generating new date-fns locales",
+  "repository": {},
+  "main": "index.js",
+  "scripts": {
+    "generate": "node cldrToLocale"
+  },
+  "dependencies": {
+    "cldr": "^5.7.0",
+    "lodash": "^4.17.20",
+    "mem-fs": "^1.2.0",
+    "mem-fs-editor": "^7.0.1",
+    "pretty-format": "^26.4.2"
+  }
+}

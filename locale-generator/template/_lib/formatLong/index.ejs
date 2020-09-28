@@ -1,0 +1,26 @@
+import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
+
+var dateFormats = <%- formatCldrCode(dateFormats) %>
+
+var timeFormats = <%- formatCldrCode(timeFormats) %>
+
+var dateTimeFormats = <%- formatCldrCode(dateTimePatterns).replace(/\{1\}/g, '{{date}}').replace(/\{0\}/g, '{{time}}') %>
+
+var formatLong = {
+  date: buildFormatLongFn({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+
+  time: buildFormatLongFn({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+}
+
+export default formatLong

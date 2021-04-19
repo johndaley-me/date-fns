@@ -16,12 +16,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns {Date} the new date with the days added
- * @throws {TypeError} 2 arguments required
+ * @returns {Date} - the new date with the days added
+ * @throws {TypeError} - 2 arguments required
  *
  * @example
  * // Add 10 days to 1 September 2014:
- * var result = addDays(new Date(2014, 8, 1), 10)
+ * const result = addDays(new Date(2014, 8, 1), 10)
  * //=> Thu Sep 11 2014 00:00:00
  */
 export default function addDays(
@@ -30,8 +30,8 @@ export default function addDays(
 ): Date {
   requiredArgs(2, arguments)
 
-  var date = toDate(dirtyDate)
-  var amount = toInteger(dirtyAmount)
+  const date = toDate(dirtyDate)
+  const amount = toInteger(dirtyAmount)
   if (isNaN(amount)) {
     return new Date(NaN)
   }
